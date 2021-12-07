@@ -1,17 +1,10 @@
 import express from 'express';
 import db from '../models/index.mjs';
+import initIndexController from '../controllers/indexController.mjs';
 
 const router = express.Router();
+const indexController = initIndexController(db);
 
-const getAllDrummers = async (req, res) => {
-  try {
-    const drummers = await db.Drummer.findAll();
-    res.render('index', { drummers });
-  } catch (err) {
-    res.status(500).send(err);
-  }
-};
-
-router.get('/', getAllDrummers);
+router.get('/', indexController.index);
 
 export default router;
