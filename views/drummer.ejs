@@ -4,11 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <h1>Drummers</h1>
+    <h1>Drummer <%= drummer.id %></h1>
     <div>
-      <% drummers.forEach((drummer) => { %>
-      <p><a href="/drummer/<%= drummer.id %>"><%= drummer.name %></a></p>
-      <% }) %>
+      <p><%= drummer.name %></p>
     </div>
+    <footer><a href="/">Back to Main</a></footer>
   </body>
 </html>
