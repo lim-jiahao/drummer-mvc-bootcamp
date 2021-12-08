@@ -6,6 +6,13 @@
   <body>
     <div>
       <h1><%= drummer.name %></h1>
+      <p><strong>Price per gig:</strong> $<%= drummer.pricePerGig %></p>
+      <p><strong>Equipment List:</strong></p>
+      <ul>
+        <% equipments.forEach((element) => { %>
+        <li><%= element.name %></li>
+        <% }) %>
+      </ul>
       <a href="/reservation/<%= drummer.id %>">Reserve</a>
     </div>
     <hr />

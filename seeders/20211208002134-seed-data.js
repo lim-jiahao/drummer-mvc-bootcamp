@@ -38,10 +38,10 @@ module.exports = {
         updated_at: new Date(),
       },
     ];
-    await queryInterface.bulkInsert('equipments', equipmentList);
+    await queryInterface.bulkInsert('equipment', equipmentList);
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('equipments', null, {});
+    await queryInterface.bulkDelete('equipment', null, {});
   },
 };

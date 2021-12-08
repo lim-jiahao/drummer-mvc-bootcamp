@@ -3,7 +3,8 @@ const initDrummerController = (db) => {
     try {
       const { id } = req.params;
       const drummer = await db.Drummer.findOne({ where: { id } });
-      res.render('drummer', { drummer });
+      const equipments = await drummer.getEquipment();
+      res.render('drummer', { drummer, equipments });
     } catch (err) {
       res.status(500).send(err);
     }

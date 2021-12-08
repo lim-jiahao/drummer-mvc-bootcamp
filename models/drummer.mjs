@@ -11,6 +11,9 @@ export default function initDrummerModel(sequelize, DataTypes) {
       name: {
         type: DataTypes.STRING,
       },
+      pricePerGig: {
+        type: DataTypes.FLOAT,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

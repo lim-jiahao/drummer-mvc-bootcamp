@@ -3,8 +3,7 @@ const initReservationController = (db) => {
     try {
       const { id } = req.params;
       const drummer = await db.Drummer.findOne({ where: { id } });
-      const reservations = await db.Reservation.findAll({
-        where: { drummerId: id },
+      const reservations = await drummer.getReservations({
         order: [['date', 'DESC']],
       });
       res.render('reservation-form', { drummer, reservations });
