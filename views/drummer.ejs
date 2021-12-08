@@ -4,10 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <h1>Drummer <%= drummer.id %></h1>
     <div>
-      <p><%= drummer.name %></p>
+      <h1><%= drummer.name %></h1>
+      <a href="/reservation/<%= drummer.id %>">Reserve</a>
     </div>
+    <hr />
     <footer><a href="/">Back to Main</a></footer>
   </body>
 </html>

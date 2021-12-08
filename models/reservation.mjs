@@ -8,8 +8,8 @@ export default function initReservationModel(sequelize, DataTypes) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      name: {
-        type: DataTypes.STRING,
+      date: {
+        type: DataTypes.DATEONLY,
       },
       drummerId: {
         type: DataTypes.INTEGER,

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Reserve <%= drummer.name %></h1>
+    <form action="/reservation/<%= drummer.id %>" method="POST">
+      <label for="date">Date:</label>
+      <input
+        id="date-input"
+        type="date"
+        name="date"
+        min="<%= new Date().toISOString().split('T')[0] %>"
+        required
+      />
+      <input id="submit-btn" type="submit" value="Submit" />
+    </form>
+    <p id="message" style="color: red; display: none">
+      This date is not available for booking!
+    </p>
+    <div>
+      <h2>All Reservations:</h2>
+      <% reservations.forEach((reservation) => { %>
+      <p><%= reservation.date %></p>
+      <% }) %>
+    </div>
+    <hr />
+    <footer><a href="/">Back to Main</a></footer>
+
+    <script>
+      const inputDate = document.getElementById("date-input");
+      const btn = document.getElementById("submit-btn");
+      const message = document.getElementById("message");
+
+      inputDate.addEventListener("input", () => {
+        let reservedDates = JSON.parse(`<%- JSON.stringify(reservations) %>`);
+        reservedDates = reservedDates.map((reservation) => reservation.date);
+
+        if (reservedDates.includes(inputDate.value)) {
+          btn.disabled = true;
+          message.style.display = "block";
+        } else {
+          btn.disabled = false;
+          message.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
